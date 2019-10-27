@@ -1,0 +1,123 @@
+commit 4964ce18c00d587bacf8967ed087406274975ca6
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 11:27:15 2019 +0200
+
+    removed file1 and renamed file2 to file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit deb935512c39287a67804880c38372820f0e9004
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 11:21:20 2019 +0200
+
+    added tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 187b36ee6927f43295e865f1fea4b50b51ae9167
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 11:16:03 2019 +0200
+
+    modified eka and kolmas using parameter -p
+
+ eka.txt    | 5 ++---
+ kolmas.txt | 1 -
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+commit e85ad0ff754dc9ddccdbcb111bcb470de598de6a
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 11:13:18 2019 +0200
+
+    modified eka and kolmas
+
+ eka.txt    | 11 +----------
+ kolmas.txt |  1 +
+ 2 files changed, 2 insertions(+), 10 deletions(-)
+
+commit 4660d46c213554c3350d3fc45c91904ab54d2cbd
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 11:10:43 2019 +0200
+
+    renamed tiedosto.txt to eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 04405efd343a2e3bb486166a6e9cff55ee67b522
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 11:09:55 2019 +0200
+
+    removed toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 845f51def08b3f1f64e952bdf0237f002d1b9f85
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 11:07:00 2019 +0200
+
+    modified tiedosto.txt
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 726773bd4b119200b94e4d09c348893f82b6f462
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 11:06:06 2019 +0200
+
+    lorem ipsum tiedosto.txt
+
+ tiedosto.txt | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+commit fe931ab8151bbd55e0477a8dda10b576565bd1e1
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 10:46:25 2019 +0200
+
+    added stuff
+
+ stuff/moi.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 9cd6cba01e212799872e93c02b8ea41c92c88cef
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 10:45:49 2019 +0200
+
+    modified toinen and kolmas
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit fd6f4658315ef9fdf5bd8967014271be4e9279c7
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 10:44:40 2019 +0200
+
+    added kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit af6f2281aa0599a07a71e93598e5b6ab5bcdf691
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 10:42:47 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 5ceacb220d44b4303756f7c6eba25ce6d8475803
+Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
+Date:   Sun Oct 27 10:40:21 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
