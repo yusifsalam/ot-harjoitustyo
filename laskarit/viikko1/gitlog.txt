@@ -1,3 +1,4 @@
+GITLOG
 commit 4964ce18c00d587bacf8967ed087406274975ca6
 Author: Yusif Salam-zade <yusif.salam-zade@helsinki.fi>
 Date:   Sun Oct 27 11:27:15 2019 +0200
