@@ -1,0 +1,22 @@
+title Machine
+
+
+Main->Machine: new Machine()
+Machine->tank: new FuelTank()
+tank-->Machine: tank
+Machine->tank: fill(40)
+tank-->Machine: tank
+Machine->engine: new Engine(tank)
+engine-->Machine: engine
+Main->Machine: drive()
+Machine->engine: start()
+engine->tank: consume(5)
+Machine->engine: isRunning()
+engine-->Machine: running
+
+alt running == true
+    Machine->engine: useEnergy()
+    engine->tank: consume(10)
+else else
+    
+end
