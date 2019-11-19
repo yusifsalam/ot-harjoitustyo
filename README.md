@@ -8,3 +8,31 @@ The application is a maven project written in Java. JavaFX is used for the user 
 [Specification](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/specification.md)
 
 [Time book](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/work_hours.md)
+
+## Available commands
+### Starting the application
+```
+    mvn compile exec:java -Dexec.mainClass=gameof2048.Main
+```
+### Testing
+Tests can be run with the command
+```
+mvn test
+```
+Test coverage can be generated with the following command
+```
+ mvn jacoco:report
+```
+Jacoco report (html page) can be found from **target/site/jacoco/index.html.** 
+### JavaDoc
+You can generate a custom JavaDoc using
+```
+mvn javadoc:javadoc
+```
+The generated HTML file is located at **target/site/apidocs/index.html**
+### Checkstyle
+File checkstyle.xml defines the rules
+```
+mvn jxr:jxr checkstyle:checkstyle
+``` 
+Checkstyle report can be found from **target/site/checkstyle.html**
