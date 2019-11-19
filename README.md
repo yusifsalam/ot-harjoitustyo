@@ -12,7 +12,7 @@ The application is a maven project written in Java. JavaFX is used for the user 
 ## Available commands
 ### Starting the application
 ```
-    mvn compile exec:java -Dexec.mainClass=gameof2048.Main
+mvn compile exec:java -Dexec.mainClass=gameof2048.Main
 ```
 ### Testing
 Tests can be run with the command
