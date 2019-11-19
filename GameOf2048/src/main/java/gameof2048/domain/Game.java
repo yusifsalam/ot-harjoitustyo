@@ -19,4 +19,12 @@ public class Game {
         res += "\n Board: \n" + board.toString();
         return res;
     }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public User getUser() {
+        return user;
+    }
 }
