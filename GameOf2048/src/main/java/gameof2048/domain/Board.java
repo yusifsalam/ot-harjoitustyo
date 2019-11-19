@@ -15,6 +15,15 @@ public class Board {
         this.cells[15].setValue(2);
     }
 
+    public int getCellValueAt(int x, int y){
+        int i = x * y - 1;
+        return cells[i].getValue();
+    }
+
+    public int getCellValueAt(int i) {
+        return cells[i].getValue();
+    }
+
     public String toString() {
         String res = "";
         for (int i = 0; i < cells.length; i++) {
