@@ -24,6 +24,12 @@ Test coverage can be generated with the following command
  mvn jacoco:report
 ```
 Jacoco report (html page) can be found from **target/site/jacoco/index.html.** 
+### Generating a jar file
+You can generate a jar file with the command 
+```
+mvn package
+```
+The command will generate GameOf2048-1.0-SNAPSHOT.jar file inside target folder. 
 ### JavaDoc
 You can generate a custom JavaDoc using
 ```
@@ -31,7 +37,7 @@ mvn javadoc:javadoc
 ```
 The generated HTML file is located at **target/site/apidocs/index.html**
 ### Checkstyle
-File checkstyle.xml defines the rules
+File checkstyle.xml defines the rules for checkstyle.
 ```
 mvn jxr:jxr checkstyle:checkstyle
 ``` 
