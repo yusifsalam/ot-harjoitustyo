@@ -77,7 +77,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>gameof2048.Main</mainClass>
+                                    <mainClass>game.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

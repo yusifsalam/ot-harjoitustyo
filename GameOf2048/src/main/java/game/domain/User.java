@@ -1,4 +1,4 @@
-package gameof2048.domain;
+package game.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ public class User {
     private int highscore;
     private List<Integer> history;
 
-    public User(String username){
+    public User(String username) {
         this.username = username;
         this.highscore = 0;
         this.history = new ArrayList<>();

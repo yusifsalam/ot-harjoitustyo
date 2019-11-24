@@ -1,9 +1,9 @@
-package gameof2048;
+package game;
 
-import gameof2048.domain.Board;
-import gameof2048.domain.Game;
-import gameof2048.domain.User;
-import gameof2048.ui.GameUI;
+import game.domain.Board;
+import game.domain.Game;
+import game.domain.User;
+import game.ui.GameUI;
 
 import java.util.Random;
 import java.util.Scanner;

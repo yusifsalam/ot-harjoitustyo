@@ -1,9 +1,9 @@
-package gameof2048.domain;
+package game.domain;
 
 public class Cell {
     private int value;
 
-    public Cell(){
+    public Cell() {
         this.value = 0;
     }
 
@@ -21,6 +21,6 @@ public class Cell {
 
     @Override
     public String toString() {
-        return value+"";
+        return value + "";
     }
 }

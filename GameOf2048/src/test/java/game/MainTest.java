@@ -1,8 +1,8 @@
-package gameof2048;
+package game;
 
-import gameof2048.domain.Board;
-import gameof2048.domain.Game;
-import gameof2048.domain.User;
+import game.domain.Board;
+import game.domain.Game;
+import game.domain.User;
 import org.junit.Before;
 import org.junit.Test;
 

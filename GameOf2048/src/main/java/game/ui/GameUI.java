@@ -1,4 +1,4 @@
-package gameof2048.ui;
+package game.ui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

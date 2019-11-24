@@ -1,4 +1,4 @@
-package gameof2048.domain;
+package game.domain;
 
 public class Game {
     private Board board;
@@ -13,9 +13,13 @@ public class Game {
         this.gameOver = false;
     }
 
+    public void startNewGame() {
+
+    }
+
     public String toString() {
         String res = "Username: " + user.toString();
-        res += "\n Score: "+ score;
+        res += "\n Score: " + score;
         res += "\n Board: \n" + board.toString();
         return res;
     }
