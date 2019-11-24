@@ -42,7 +42,6 @@ public class Main {
                     printActions();
             }
         }
-
     }
 
     public static void printActions() {
