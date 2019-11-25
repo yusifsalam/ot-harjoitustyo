@@ -7,6 +7,8 @@ The application is a maven project written in Java. JavaFX is used for the user 
 ### Documentation
 [Specification](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/specification.md)
 
+[Architecture description](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/architecture.md)
+
 [Time book](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/work_hours.md)
 
 ## Available commands
