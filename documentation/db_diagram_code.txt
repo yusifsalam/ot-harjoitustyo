@@ -1,0 +1,7 @@
+[User|username:String;highscore:Integer]
+[Game|score:Integer;gameOver:Boolean]
+[Board|randomSeed:Integer]
+[Cell|value:Integer]
+[User]1-*[Game]
+[Game]-[Board]
+[Board]-[Cell]
