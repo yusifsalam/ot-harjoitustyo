@@ -61,13 +61,13 @@ public class Board {
     }
 
     public int randomizeCellValue() {
-        return r.nextDouble() >= 0.9 ? 4:2;
+        return r.nextDouble() >= 0.9 ? 4 : 2;
     }
 
     public boolean canMoveUp() {
         updateVacantCells();
         for (int i = 4; i < 16; i++) {
-            if (getCellValueAt(i-4) == getCellValueAt(i) || isCellVacant(i-4)) return true;
+            if (getCellValueAt(i - 4) == getCellValueAt(i) || isCellVacant(i - 4)) return true;
         }
         return false;
     }
@@ -75,7 +75,7 @@ public class Board {
     public boolean canMoveDown() {
         updateVacantCells();
         for (int i = 0; i < 12; i++) {
-            if (getCellValueAt(i) == getCellValueAt(i+4) || isCellVacant(i+4)) return true;
+            if (getCellValueAt(i) == getCellValueAt(i + 4) || isCellVacant(i + 4)) return true;
         }
         return false;
     }
@@ -84,7 +84,7 @@ public class Board {
         updateVacantCells();
         for (int i = 0; i < 16; i++) {
             if (i % 3 != 0) {
-                if (getCellValueAt(i) == getCellValueAt(i+1) || isCellVacant(i+1)) return true;
+                if (getCellValueAt(i) == getCellValueAt(i + 1) || isCellVacant(i + 1)) return true;
             }
         }
         return false;
@@ -94,7 +94,7 @@ public class Board {
         updateVacantCells();
         for (int i = 1; i < 16; i++) {
             if (i % 4 != 0) {
-                if (getCellValueAt(i-1) == getCellValueAt(i) || isCellVacant(i-1)) return true;
+                if (getCellValueAt(i - 1) == getCellValueAt(i) || isCellVacant(i - 1)) return true;
             }
         }
         return false;
@@ -103,11 +103,11 @@ public class Board {
     public void moveUp() {
         if (canMoveUp()) {
             for (int i = 4; i < 16; i++) {
-                if (!isCellVacant(i) && getCellValueAt(i-4) == getCellValueAt(i)) {
-                    cells.get(i-4).setValue(getCellValueAt(i) + getCellValueAt(i-4));
+                if (!isCellVacant(i) && getCellValueAt(i - 4) == getCellValueAt(i)) {
+                    cells.get(i - 4).setValue(getCellValueAt(i) + getCellValueAt(i - 4));
                     cells.get(i).setValue(0);
-                } else if (isCellVacant(i-4)) {
-                    cells.get(i-4).setValue(getCellValueAt(i) + getCellValueAt(i-4));
+                } else if (isCellVacant(i - 4)) {
+                    cells.get(i - 4).setValue(getCellValueAt(i) + getCellValueAt(i - 4));
                     cells.get(i).setValue(0);
                 }
 
@@ -118,8 +118,8 @@ public class Board {
     public void moveDown() {
         if (canMoveDown()) {
             for (int i = 11; i >= 0; i--) {
-                if ((!isCellVacant(i) && getCellValueAt(i) == getCellValueAt(i+4)) || isCellVacant(i+4)) {
-                    cells.get(i+4).setValue(getCellValueAt(i) + getCellValueAt(i+4));
+                if ((!isCellVacant(i) && getCellValueAt(i) == getCellValueAt(i + 4)) || isCellVacant(i + 4)) {
+                    cells.get(i + 4).setValue(getCellValueAt(i) + getCellValueAt(i + 4));
                     cells.get(i).setValue(0);
                 }
             }
@@ -127,11 +127,11 @@ public class Board {
     }
 
     public void moveRight() {
-        int[] order = {2,6,10,14,1,5,9,13,0,4,8,12};
+        int[] order = {2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12};
         if (canMoveRight()) {
             for (int i: order) {
-                if ((!isCellVacant(i) && getCellValueAt(i) == getCellValueAt(i+1)) || isCellVacant(i+1)) {
-                    cells.get(i+1).setValue(getCellValueAt(i) + getCellValueAt(i+1));
+                if ((!isCellVacant(i) && getCellValueAt(i) == getCellValueAt(i + 1)) || isCellVacant(i + 1)) {
+                    cells.get(i + 1).setValue(getCellValueAt(i) + getCellValueAt(i + 1));
                     cells.get(i).setValue(0);
                 }
             }
@@ -139,11 +139,11 @@ public class Board {
     }
 
     public void moveLeft() {
-        int[] order = {1,5,9,13,2,6,10,14,3,7,11,15};
+        int[] order = {1, 5, 9, 13, 2, 6, 10, 14, 3, 7, 11, 15};
         if (canMoveLeft()) {
             for (int i : order) {
-                if ((!isCellVacant(i) && getCellValueAt(i-1) == getCellValueAt(i)) || isCellVacant(i-1)) {
-                    cells.get(i-1).setValue(getCellValueAt(i-1) + getCellValueAt(i));
+                if ((!isCellVacant(i) && getCellValueAt(i - 1) == getCellValueAt(i)) || isCellVacant(i - 1)) {
+                    cells.get(i - 1).setValue(getCellValueAt(i - 1) + getCellValueAt(i));
                     cells.get(i).setValue(0);
                 }
             }
