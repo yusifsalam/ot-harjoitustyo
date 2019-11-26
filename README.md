@@ -14,7 +14,7 @@ The application is a maven project written in Java. JavaFX is used for the user 
 ## Available commands
 ### Starting the application
 ```
-mvn compile exec:java -Dexec.mainClass=gameof2048.Main
+mvn compile exec:java -Dexec.mainClass=game.Main
 ```
 ### Testing
 Tests can be run with the command
@@ -41,6 +41,11 @@ The generated HTML file is located at **target/site/apidocs/index.html**
 ### Checkstyle
 File checkstyle.xml defines the rules for checkstyle.
 ```
-mvn jxr:jxr checkstyle:checkstyle
+mvn checkstyle:checkstyle
 ``` 
-Checkstyle report can be found from **target/site/checkstyle.html**
+Checkstyle report can be found from **target/site/checkstyle.html**.
+
+By default the checkstyle does not have any styling. To get the styling for the checkstyle report, run 
+```
+mvn site
+```
