@@ -33,8 +33,8 @@ public class Main {
                     int seed = scanner.nextInt();
                     Random r = new Random(seed);
                     Board board = new Board(r);
-                    Game game = new Game(board, user);
-                    System.out.println(game);
+                    Game game = new Game(board, user, scanner);
+                    System.out.println(game.playGame());
                     break;
                 case 4:
                     break;
