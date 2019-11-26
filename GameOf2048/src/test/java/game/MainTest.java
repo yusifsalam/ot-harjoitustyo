@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Random;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -16,19 +17,45 @@ public class MainTest {
 
     @Before
     public void setUp() {
-        Board board = new Board(new Random());
-        game = new Game(board, new User("Unknown"));
+        Board board = new Board(new Random(8));
+        game = new Game(board, new User("Unknown"), new Scanner(""));
     }
 
     @Test
     public void gameIsGeneratedCorrectly() {
-        int sum = 0;
-        for (int i = 0; i < 15; i++) {
-            sum += game.getBoard().getCellValueAt(i);
-        }
-        assertEquals(2, game.getBoard().getCellValueAt(4,4));
-        assertEquals(0, sum);
+        assertEquals(2, game.getBoard().getCellValueAt(0));
+        assertEquals(4, game.getBoard().getCellValueAt(11));
         assertEquals("Unknown", game.getUser().getUsername());
+    }
+
+    @Test
+    public void movingDownWorksCorrectly() {
+        game.moveBoardDown();
+        assertEquals(2, game.getBoard().getCellValueAt(4));
+        assertEquals(4, game.getBoard().getCellValueAt(15));
+    }
+
+    @Test
+    public void movingUpWorksCorrectly() {
+        game.moveBoardUp();
+        assertEquals(2, game.getBoard().getCellValueAt(0));
+        assertEquals(4, game.getBoard().getCellValueAt(7));
+    }
+
+
+    @Test
+    public void movingRightWorksCorrectly() {
+        game.moveBoardRight();
+        assertEquals(2, game.getBoard().getCellValueAt(1));
+        assertEquals(4, game.getBoard().getCellValueAt(11));
+    }
+
+
+    @Test
+    public void movingLeftWorksCorrectly() {
+        game.moveBoardLeft();
+        assertEquals(2, game.getBoard().getCellValueAt(0));
+        assertEquals(4, game.getBoard().getCellValueAt(10));
     }
 
     @Test
