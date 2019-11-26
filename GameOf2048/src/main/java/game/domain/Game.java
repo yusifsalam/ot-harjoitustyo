@@ -1,20 +1,63 @@
 package game.domain;
 
+import java.util.Scanner;
+
 public class Game {
     private Board board;
     private User user;
+    private Scanner input;
     private int score;
     private boolean gameOver;
 
-    public Game(Board board, User user) {
+    public Game(Board board, User user, Scanner input) {
         this.board = board;
         this.user = user;
-        this.score = 0;
+        this.input = input;
+        this.score = board.calculateScore();
         this.gameOver = false;
     }
 
-    public void startNewGame() {
+    public int playGame() {
+        while (!this.gameOver) {
+            String direction = input.nextLine();
+            switch (direction) {
+                case "w":
+                    moveBoardUp();
+                    break;
+                case "a":
+                    moveBoardLeft();
+                    break;
+                case "s":
+                    moveBoardDown();
+                    break;
+                case "d":
+                    moveBoardRight();
+                    break;
+                case "i quit":
+                    gameOver = true;
+                    break;
+            }
+            board.spawnCell();
+            score = board.calculateScore();
+            System.out.println(this);
+        }
+        return score;
+    }
 
+    public void moveBoardUp() {
+        board.moveUp();
+    }
+
+    public void moveBoardDown() {
+        board.moveDown();
+    }
+
+    public void moveBoardLeft() {
+        board.moveLeft();
+    }
+
+    public void moveBoardRight() {
+        board.moveRight();
     }
 
     public String toString() {
