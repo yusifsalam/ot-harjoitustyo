@@ -24,3 +24,8 @@ Possible expansion ideas include:
 - the PvP mode where two or more players face off
 - achievements
 - time trial mode
+
+## Implemented features as of 26.11.2019
+- basic cli to start a game or change username
+- game board's logic
+- player can start a game from command line but game over condition hasn't been implemented
