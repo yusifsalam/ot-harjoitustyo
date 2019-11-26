@@ -26,6 +26,11 @@ Test coverage can be generated with the following command
 mvn jacoco:report
 ```
 Jacoco report (html page) can be found from **target/site/jacoco/index.html.** 
+
+Jacoco needs test results to generate the report, so it is best to chain two commands to generate the jacoco coverage report
+```
+mvn test jacoco:report
+``` 
 ### Generating a jar file
 You can generate a jar file with the command 
 ```
