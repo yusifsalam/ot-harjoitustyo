@@ -6,6 +6,11 @@ public class Game {
     private Board board;
     private User user;
     private Scanner input;
+
+    public int getScore() {
+        return score;
+    }
+
     private int score;
     private boolean gameOver;
 
