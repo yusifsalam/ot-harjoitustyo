@@ -6,4 +6,5 @@
 | 19.11 | 6 | revise javafx, create skeletons for most classes, write simple test for game object, update README|
 | 25.11 | 2 | fix checkstyle errors |
 | 26.11 | 4 | update game board logic, game now playable but not winnable. update tests that were broken during the logic overhaul|
-| total   | 16   | | 
+| 3.12 | 4 | work on the GUI version of the game, revise how javafx works|
+| total   | 20   | | 
