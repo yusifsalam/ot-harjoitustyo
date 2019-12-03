@@ -5,14 +5,17 @@ import game.domain.Cell;
 import game.domain.Game;
 import game.domain.User;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.scene.input.KeyCode;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -86,6 +89,29 @@ public class GameUI extends Application {
         }
         gamePane.getChildren().addAll(gameInfo, gameGrid);
         gameScene = new Scene(gamePane, 440, 500);
+        gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case W:
+                        game.moveBoardUp();
+                        System.out.println(game.getBoard());
+                        break;
+                    case S:
+                        game.moveBoardDown();
+                        System.out.println(game.getBoard());
+                        break;
+                    case A:
+                        game.moveBoardLeft();
+                        System.out.println(game.getBoard());
+                        break;
+                    case D:
+                        game.moveBoardRight();
+                        System.out.println(game.getBoard());
+                        break;
+                }
+            }
+        });
 
     }
 
