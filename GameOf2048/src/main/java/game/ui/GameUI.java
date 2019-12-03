@@ -27,6 +27,7 @@ public class GameUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("2048");
+        primaryStage.setResizable(false);
         VBox startPane = new VBox(10);
         Label gameTitle = new Label("Game of 2048");
         Button newGameBtn = new Button("NEW GAME");
