@@ -150,6 +150,10 @@ public class Board {
         }
     }
 
+    public List<Cell> getCells() {
+        return cells;
+    }
+
     public String toString() {
         String res = "";
         for (int i = 0; i < cells.size(); i++) {
