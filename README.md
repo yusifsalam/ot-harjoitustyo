@@ -11,6 +11,9 @@ The application is a maven project written in Java. JavaFX is used for the user 
 
 [Time book](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/work_hours.md)
 
+### Releases
+[Week 5](https://github.com/yusifsalam/ot-harjoitustyo/releases/tag/1.0)
+
 ## Available commands
 ### Starting the application
 ```
