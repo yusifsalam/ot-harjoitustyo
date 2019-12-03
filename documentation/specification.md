@@ -25,8 +25,9 @@ Possible expansion ideas include:
 - achievements
 - time trial mode
 
-## Implemented features as of 26.11.2019
+## Implemented features as of 03.12.2019
 - basic cli to start a game or change username
 - game board's logic
 - player can start a game from command line but game over condition hasn't been implemented
 - current version is slightly different from the conventional 2048 game in that the cells only move by one instead of moving as far as the board allows. 
+- user can now start a GUI version of the game and is shown the game board
