@@ -16,8 +16,13 @@ The application is a maven project written in Java. JavaFX is used for the user 
 
 ## Available commands
 ### Starting the application
+Command-line version
 ```
 mvn compile exec:java -Dexec.mainClass=game.Main
+```
+GUI version
+```
+mvn compile exec:java -Dexec.mainClass=game.ui.GameUI
 ```
 ### Testing
 Tests can be run with the command
@@ -39,7 +44,10 @@ You can generate a jar file with the command
 ```
 mvn package
 ```
-The command will generate GameOf2048-1.0-SNAPSHOT.jar file inside target folder. 
+The command will generate GameOf2048-1.0-SNAPSHOT.jar file inside target folder. You can run the jar file with 
+```
+java -jar target/GameOf2048-1.0-SNAPSHOT.jar
+```
 ### JavaDoc
 You can generate a custom JavaDoc using
 ```
