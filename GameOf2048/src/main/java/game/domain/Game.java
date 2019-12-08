@@ -42,11 +42,15 @@ public class Game {
                     gameOver = true;
                     break;
             }
-            board.spawnCell();
-            score = board.calculateScore();
-            System.out.println(this);
+            nextMove();
         }
         return score;
+    }
+
+    public void nextMove() {
+        board.spawnCell();
+        score = board.calculateScore();
+        System.out.println(this);
     }
 
     public void moveBoardUp() {

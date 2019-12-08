@@ -25,12 +25,13 @@ public class GameUI extends Application {
     private Scene gameScene;
     private Game game;
     private User user;
+    private VBox gamePane;
 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("2048");
-        primaryStage.setResizable(false);
+//        primaryStage.setResizable(false);
         VBox startPane = new VBox(10);
         Label gameTitle = new Label("Game of 2048");
         Button newGameBtn = new Button("NEW GAME");
@@ -49,7 +50,36 @@ public class GameUI extends Application {
         primaryStage.show();
 
 
-        VBox gamePane = new VBox(10);
+        gamePane = new VBox(10);
+        drawBoard();
+        gameScene = new Scene(gamePane, 440, 500);
+        gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case W:
+                        game.moveBoardUp();
+                        break;
+                    case S:
+                        game.moveBoardDown();
+                        break;
+                    case A:
+                        game.moveBoardLeft();
+                        break;
+                    case D:
+                        game.moveBoardRight();
+                        break;
+                }
+                game.nextMove();
+                drawBoard();
+                System.out.println(game.getBoard());
+            }
+        });
+
+    }
+
+    public void drawBoard() {
+        gamePane.getChildren().clear();
         BorderPane gameInfo = new BorderPane();
         gameInfo.setLeft(new Label("Username: " + user.getUsername()));
         gameInfo.setRight(new Label("Score: "+game.getScore()));
@@ -88,31 +118,6 @@ public class GameUI extends Application {
             index++;
         }
         gamePane.getChildren().addAll(gameInfo, gameGrid);
-        gameScene = new Scene(gamePane, 440, 500);
-        gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case W:
-                        game.moveBoardUp();
-                        System.out.println(game.getBoard());
-                        break;
-                    case S:
-                        game.moveBoardDown();
-                        System.out.println(game.getBoard());
-                        break;
-                    case A:
-                        game.moveBoardLeft();
-                        System.out.println(game.getBoard());
-                        break;
-                    case D:
-                        game.moveBoardRight();
-                        System.out.println(game.getBoard());
-                        break;
-                }
-            }
-        });
-
     }
 
     @Override
