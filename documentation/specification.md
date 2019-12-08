@@ -13,8 +13,8 @@ After the CLI is functional, a graphical user interface will be implemented. The
 ![GUI](https://raw.githubusercontent.com/yusifsalam/ot-harjoitustyo/master/documentation/images/prototype.png)
 
 ## Basic features
-- start new game of 2048
-- restart game
+- start new game of 2048 [done]
+- restart game [done]
 - view stats
 - reset stats
 - compare highscores
@@ -25,9 +25,10 @@ Possible expansion ideas include:
 - achievements
 - time trial mode
 
-## Implemented features as of 03.12.2019
+## Implemented features as of 08.12.2019
 - basic cli to start a game or change username
 - game board's logic
-- player can start a game from command line but game over condition hasn't been implemented
+- player can start a game from command line
 - current version is slightly different from the conventional 2048 game in that the cells only move by one instead of moving as far as the board allows. 
-- user can now start a GUI version of the game and is shown the game board
+- user can now start a GUI version of the game 
+- user can restart a game from GUI
