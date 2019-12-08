@@ -17,6 +17,7 @@ The application is a maven project written in Java. JavaFX is used for the user 
 [Week 5](https://github.com/yusifsalam/ot-harjoitustyo/releases/tag/1.0)
 
 ## Available commands
+After you have cloned the repository, change your working directory to the game sub-directory `cd GameOf2048/`, then you can run the following commands. 
 ### Starting the application
 Command-line version
 ```
