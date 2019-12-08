@@ -91,25 +91,7 @@ public class GameUI extends Application {
             Rectangle rect = new Rectangle();
             rect.setWidth(100);
             rect.setHeight(100);
-            Color rectFill;
-            switch (cell.getValue()) {
-                case 2:
-                    rectFill = Color.BLANCHEDALMOND;
-                    break;
-                case 4:
-                    rectFill = Color.BISQUE;
-                    break;
-                case 8:
-                    rectFill = Color.BURLYWOOD;
-                    break;
-                case 16:
-                    rectFill = Color.DARKKHAKI;
-                    break;
-                default:
-                    rectFill = Color.BEIGE;
-                    break;
-            }
-            rect.setFill(rectFill);
+            rect.setFill(getCellFillColor(cell.getValue()));
             square.getChildren().addAll(rect, cellValue);
             GridPane.setRowIndex(square, index / 4);
             GridPane.setColumnIndex(square, index % 4);
@@ -118,6 +100,49 @@ public class GameUI extends Application {
             index++;
         }
         gamePane.getChildren().addAll(gameInfo, gameGrid);
+    }
+
+    private Color getCellFillColor(int value) {
+        Color rectFill;
+        switch (value) {
+            case 2:
+                rectFill = Color.web("FFFF00");
+                break;
+            case 4:
+                rectFill = Color.web("FFDD00");
+                break;
+            case 8:
+                rectFill = Color.web("FFBB00");
+                break;
+            case 16:
+                rectFill = Color.web("FF9900");
+                break;
+            case 32:
+                rectFill = Color.web("FF9900");
+                break;
+            case 64:
+                rectFill = Color.web("FF7700");
+                break;
+            case 128:
+                rectFill = Color.web("FF6600");
+                break;
+            case 256:
+                rectFill = Color.web("FF5500");
+                break;
+            case 512:
+                rectFill = Color.web("FF4400");
+                break;
+            case 1024:
+                rectFill = Color.web("FF2200");
+                break;
+            case 2048:
+                rectFill = Color.web("FF1100");
+                break;
+            default:
+                rectFill = Color.BEIGE;
+                break;
+        }
+        return rectFill;
     }
 
     @Override
