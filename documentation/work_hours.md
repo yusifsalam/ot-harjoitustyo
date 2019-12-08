@@ -7,4 +7,5 @@
 | 25.11 | 2 | fix checkstyle errors |
 | 26.11 | 4 | update game board logic, game now playable but not winnable. update tests that were broken during the logic overhaul|
 | 3.12 | 4 | work on the GUI version of the game, revise how javafx works|
-| total   | 20   | | 
+| 8.12 | 4 | implement game over condition, GUI: game can now be restarted, more junit tests|
+| total   | 24   | | 
