@@ -104,6 +104,7 @@ public class GameUI extends Application {
         for (Cell cell: game.getBoard().getCells()) {
             StackPane square = new StackPane();
             Label cellValue = new Label(""+cell.getValue());
+            cellValue.setFont(new Font("Roboto Mono", 20));
             Rectangle rect = new Rectangle();
             rect.setWidth(100);
             rect.setHeight(100);
