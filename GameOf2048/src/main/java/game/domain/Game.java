@@ -13,6 +13,11 @@ public class Game {
     }
 
     private int score;
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
     private boolean gameOver;
 
     public Game(Board board, User user, Scanner input) {
@@ -68,20 +73,30 @@ public class Game {
         return maxVal >= 2048;
     }
 
+    private void checkIfGameEnded() {
+        if (!board.canMove()) {
+            gameOver = true;
+        }
+    }
+
     public void moveBoardUp() {
         board.moveUp();
+        checkIfGameEnded();
     }
 
     public void moveBoardDown() {
         board.moveDown();
+        checkIfGameEnded();
     }
 
     public void moveBoardLeft() {
         board.moveLeft();
+        checkIfGameEnded();
     }
 
     public void moveBoardRight() {
         board.moveRight();
+        checkIfGameEnded();
     }
 
     public String toString() {
