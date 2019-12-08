@@ -1,0 +1,18 @@
+.root{
+    -fx-background-color : #1C1C1E;
+    -fx-fill-width : true;
+    -fx-color : #1C1C1E;
+    -fx-fill-height : true;
+    -fx-focus-color : transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-alignment: center;
+}
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 50;
+}
+
+.button {
+    -fx-font-size: 20;
+}

@@ -34,6 +34,7 @@ public class GameUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
+        String style = "/stylesheet.css";
         primaryStage.setTitle("2048");
         primaryStage.setResizable(false);
         VBox startPane = new VBox(10);
@@ -48,6 +49,7 @@ public class GameUI extends Application {
         startPane.getChildren().addAll(gameTitle, newGameBtn, highscoresBtn, myStatsBtn);
 
         mainMenuScene = new Scene(startPane, 450, 450);
+        mainMenuScene.getStylesheets().add(style);
         user = new User("test");
 
         primaryStage.setScene(mainMenuScene);
