@@ -19,6 +19,10 @@ public class Board {
         return cells.get(i).getValue();
     }
 
+    public void setCellValueAt(int i, int value) {
+        cells.get(i).setValue(value);
+    }
+
     public boolean isCellVacant(int i) {
         return getCellValueAt(i) == 0;
     }
