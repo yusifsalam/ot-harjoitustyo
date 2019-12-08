@@ -24,18 +24,21 @@ import java.util.Scanner;
 public class GameUI extends Application {
 
     private Scene gameScene;
+    private Scene mainMenuScene;
     private Game game;
     private User user;
     private VBox gamePane;
+    private Stage stage;
 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
         primaryStage.setTitle("2048");
-//        primaryStage.setResizable(false);
+        primaryStage.setResizable(false);
         VBox startPane = new VBox(10);
         Label gameTitle = new Label("Game of 2048");
-        Button newGameBtn = new Button("NEW GAME");
+        Button newGameBtn = new Button("START GAME");
 
         newGameBtn.setOnAction(e->{
             primaryStage.setScene(gameScene);
@@ -44,10 +47,10 @@ public class GameUI extends Application {
         Button myStatsBtn = new Button("MY STATS");
         startPane.getChildren().addAll(gameTitle, newGameBtn, highscoresBtn, myStatsBtn);
 
-        Scene scene = new Scene(startPane, 450, 450);
+        mainMenuScene = new Scene(startPane, 450, 450);
         user = new User("test");
 
-        primaryStage.setScene(scene);
+        primaryStage.setScene(mainMenuScene);
         primaryStage.show();
         startGame();
 
@@ -124,9 +127,18 @@ public class GameUI extends Application {
         Text t2 = new Text();
         t2.setFont(f);
         t2.setText("YOUR SCORE WAS: " + game.getScore());
+
         Button startOver = new Button("Start over");
         startOver.setOnAction(click -> startGame());
-        gamePane.getChildren().addAll(t1, t2, startOver);
+
+        Button backToMenu = new Button("Back to main menu");
+        backToMenu.setOnAction(click -> {
+            stage.setScene(mainMenuScene);
+            VBox roo = (VBox) mainMenuScene.getRoot();
+            Button btn = (Button) roo.getChildren().get(1);
+            btn.setText("BACK TO GAME");
+        });
+        gamePane.getChildren().addAll(t1, t2, startOver, backToMenu);
     }
 
     private Color getCellFillColor(int value) {
