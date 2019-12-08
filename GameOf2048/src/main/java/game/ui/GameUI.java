@@ -17,7 +17,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.input.KeyCode;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -56,37 +55,40 @@ public class GameUI extends Application {
 
     void startGame() {
         if (gamePane != null) gamePane.getChildren().clear();
-        else gamePane = new VBox(10);
+        else {
+            gamePane = new VBox(10);
+            gameScene = new Scene(gamePane, 440, 500);
+            gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    switch (event.getCode()) {
+                        case W:
+                            game.moveBoardUp();
+                            break;
+                        case S:
+                            game.moveBoardDown();
+                            break;
+                        case A:
+                            game.moveBoardLeft();
+                            break;
+                        case D:
+                            game.moveBoardRight();
+                            break;
+                    }
+                    if (game.nextMove()) {
+                        drawBoard();
+                        System.out.println(game.getBoard());
+                    }
+                    else {
+                        drawGameOver();
+                    }
+
+                }
+            });
+        }
         game = new Game(new Board(new Random()), user, new Scanner(System.in));
         drawBoard();
-        gameScene = new Scene(gamePane, 440, 500);
-        gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case W:
-                        game.moveBoardUp();
-                        break;
-                    case S:
-                        game.moveBoardDown();
-                        break;
-                    case A:
-                        game.moveBoardLeft();
-                        break;
-                    case D:
-                        game.moveBoardRight();
-                        break;
-                }
-                if (game.nextMove()) {
-                    drawBoard();
-                    System.out.println(game.getBoard());
-                }
-                else {
-                    drawGameOver();
-                }
 
-            }
-        });
     }
 
     private void drawBoard() {
