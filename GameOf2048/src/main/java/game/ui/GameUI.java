@@ -47,12 +47,17 @@ public class GameUI extends Application {
 
         Scene scene = new Scene(startPane, 450, 450);
         user = new User("test");
-        game = new Game(new Board(new Random()), user, new Scanner(System.in));
+
         primaryStage.setScene(scene);
         primaryStage.show();
+        startGame();
 
+    }
 
-        gamePane = new VBox(10);
+    void startGame() {
+        if (gamePane != null) gamePane.getChildren().clear();
+        else gamePane = new VBox(10);
+        game = new Game(new Board(new Random()), user, new Scanner(System.in));
         drawBoard();
         gameScene = new Scene(gamePane, 440, 500);
         gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -82,7 +87,6 @@ public class GameUI extends Application {
 
             }
         });
-
     }
 
     private void drawBoard() {
@@ -118,7 +122,9 @@ public class GameUI extends Application {
         Text t2 = new Text();
         t2.setFont(f);
         t2.setText("YOUR SCORE WAS: " + game.getScore());
-        gamePane.getChildren().addAll(t1, t2);
+        Button startOver = new Button("Start over");
+        startOver.setOnAction(click -> startGame());
+        gamePane.getChildren().addAll(t1, t2, startOver);
     }
 
     private Color getCellFillColor(int value) {
