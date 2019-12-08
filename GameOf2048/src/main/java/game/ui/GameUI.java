@@ -14,6 +14,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.input.KeyCode;
 
@@ -70,19 +72,24 @@ public class GameUI extends Application {
                         game.moveBoardRight();
                         break;
                 }
-                game.nextMove();
-                drawBoard();
-                System.out.println(game.getBoard());
+                if (game.nextMove()) {
+                    drawBoard();
+                    System.out.println(game.getBoard());
+                }
+                else {
+                    drawGameOver();
+                }
+
             }
         });
 
     }
 
-    public void drawBoard() {
+    private void drawBoard() {
         gamePane.getChildren().clear();
         BorderPane gameInfo = new BorderPane();
         gameInfo.setLeft(new Label("Username: " + user.getUsername()));
-        gameInfo.setRight(new Label("Score: "+game.getScore()));
+        gameInfo.setRight(new Label("Score: " + game.getScore()));
         GridPane gameGrid = new GridPane();
         int index = 0;
         for (Cell cell: game.getBoard().getCells()) {
@@ -100,6 +107,18 @@ public class GameUI extends Application {
             index++;
         }
         gamePane.getChildren().addAll(gameInfo, gameGrid);
+    }
+
+    private void drawGameOver() {
+        gamePane.getChildren().clear();
+        Font f = new Font(30);
+        Text t1 = new Text();
+        t1.setFont(f);
+        t1.setText("GAME OVER!");
+        Text t2 = new Text();
+        t2.setFont(f);
+        t2.setText("YOUR SCORE WAS: " + game.getScore());
+        gamePane.getChildren().addAll(t1, t2);
     }
 
     private Color getCellFillColor(int value) {

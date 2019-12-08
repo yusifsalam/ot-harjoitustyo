@@ -1,5 +1,6 @@
 package game.domain;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Game {
@@ -23,7 +24,7 @@ public class Game {
     }
 
     public int playGame() {
-        while (!this.gameOver) {
+        while (board.canMove()) {
             String direction = input.nextLine();
             switch (direction) {
                 case "w":
@@ -44,13 +45,27 @@ public class Game {
             }
             nextMove();
         }
+        gameOver = true;
         return score;
     }
 
-    public void nextMove() {
+    public boolean nextMove() {
+        if (gameWon() || !board.canMove()) {
+            gameOver = true;
+            return false;
+        }
+
         board.spawnCell();
         score = board.calculateScore();
+        gameWon();
         System.out.println(this);
+        return true;
+    }
+
+    public boolean gameWon() {
+        int maxVal  = board.getCells().stream().mapToInt(c -> c.getValue()).max().
+                orElseThrow(NoSuchElementException::new);
+        return maxVal >= 2048;
     }
 
     public void moveBoardUp() {

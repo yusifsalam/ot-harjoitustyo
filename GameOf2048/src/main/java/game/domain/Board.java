@@ -100,6 +100,10 @@ public class Board {
         return false;
     }
 
+    public boolean canMove() {
+        return (canMoveDown() || canMoveUp() || canMoveLeft() || canMoveRight());
+    }
+
     public void moveUp() {
         if (canMoveUp()) {
             for (int i = 4; i < 16; i++) {
