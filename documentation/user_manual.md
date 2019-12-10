@@ -4,7 +4,7 @@ Download the release jar file and run it with `java -jar release_name.jar`
 !NB this manual is inteded for the GUI version of the game.
 
 # Using the app
-The starting screen look something like this
+The starting screen should look something like this
 
 ![main_menu](https://raw.githubusercontent.com/yusifsalam/ot-harjoitustyo/master/documentation/images/main_menu.png)
 
