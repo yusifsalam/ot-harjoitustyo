@@ -2,6 +2,9 @@ package game.domain;
 
 import java.util.*;
 
+/**
+ * This class is used for controlling the board logic
+ */
 public class Board {
     private Random r;
     private List<Cell> cells;
@@ -15,6 +18,11 @@ public class Board {
         System.out.println(this);
     }
 
+    /**
+     *
+     * @param i index of the cell (0 to 15 for a 4x4 board)
+     * @return numerical value of the cell
+     */
     public int getCellValueAt(int i) {
         return cells.get(i).getValue();
     }
@@ -23,10 +31,18 @@ public class Board {
         cells.get(i).setValue(value);
     }
 
+    /**
+     * Checks if the board cell is vacant (a cell is vacant if its value is 0)
+     * @param i index of the cell
+     * @return True or False
+     */
     public boolean isCellVacant(int i) {
         return getCellValueAt(i) == 0;
     }
 
+    /**
+     * This method initializes the starting random 4x4 board
+     */
     public void spawnStartingCells() {
         int posOne = r.nextInt(16);
         int valOne = randomizeCellValue();
@@ -43,6 +59,9 @@ public class Board {
         }
     }
 
+    /**
+     * spawns a new cell to a vacant position on the board
+     */
     public void spawnCell() {
         if (vacantIndices.isEmpty()) return;
         int pos = vacantIndices.get(r.nextInt(vacantIndices.size()));
@@ -56,6 +75,10 @@ public class Board {
         }
     }
 
+    /**
+     * calculated the score of the board - total sum of all cell values
+     * @return calculated score
+     */
     public int calculateScore() {
         return cells.stream().mapToInt(c -> c.getValue()).sum();
     }
@@ -68,6 +91,10 @@ public class Board {
         return r.nextDouble() >= 0.9 ? 4 : 2;
     }
 
+    /**
+     * checks if board can be moved up
+     * @return True or False
+     */
     public boolean canMoveUp() {
         updateVacantCells();
         for (int i = 4; i < 16; i++) {
@@ -108,6 +135,9 @@ public class Board {
         return (canMoveDown() || canMoveUp() || canMoveLeft() || canMoveRight());
     }
 
+    /**
+     * shifts the board cells up if possible.
+     */
     public void moveUp() {
         if (canMoveUp()) {
             for (int i = 4; i < 16; i++) {

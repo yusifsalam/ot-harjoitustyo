@@ -3,22 +3,28 @@ package game.domain;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+/**
+ * This class is used to handle the game.
+ */
 public class Game {
     private Board board;
     private User user;
     private Scanner input;
+    private int score;
+    private boolean gameOver;
 
     public int getScore() {
         return score;
     }
 
-    private int score;
-
+    /**
+     * checks if the game has ended
+     * @return True or False
+     */
     public boolean isGameOver() {
         return gameOver;
     }
 
-    private boolean gameOver;
 
     public Game(Board board, User user, Scanner input) {
         this.board = board;
@@ -28,6 +34,10 @@ public class Game {
         this.gameOver = false;
     }
 
+    /**
+     * this method is used for the CLI version of the game and is the main loop.
+     * @return final game score
+     */
     public int playGame() {
         while (board.canMove()) {
             String direction = input.nextLine();
@@ -54,6 +64,10 @@ public class Game {
         return score;
     }
 
+    /**
+     * This is a helper method for updating game status between turns
+     * @return True if next move is possible, False if game is over.
+     */
     public boolean nextMove() {
         if (gameWon() || !board.canMove()) {
             gameOver = true;
@@ -67,6 +81,10 @@ public class Game {
         return true;
     }
 
+    /**
+     * checks if game has been won (the board has a cell whose value is 2048)
+     * @return True or False
+     */
     public boolean gameWon() {
         int maxVal  = board.getCells().stream().mapToInt(c -> c.getValue()).max().
                 orElseThrow(NoSuchElementException::new);
