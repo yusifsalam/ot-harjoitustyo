@@ -1,5 +1,5 @@
 # User manual
-Download the release jar file and run it with `java -jar release_name.jar`
+Download the release jar file and run it with `java -jar release_name.jar`. CLI is displayed, type 1 and press enter (this will open the GUI version of the game). 
 
 !NB this manual is inteded for the GUI version of the game.
 
