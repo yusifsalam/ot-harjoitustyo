@@ -5,6 +5,7 @@ Download the release jar file and run it with `java -jar release_name.jar`
 
 # Using the app
 The starting screen look something like this
+
 ![main_menu](https://raw.githubusercontent.com/yusifsalam/ot-harjoitustyo/master/documentation/images/main_menu.png)
 
 ## Starting a new game
