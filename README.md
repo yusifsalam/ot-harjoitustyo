@@ -7,6 +7,8 @@ The goal of the project is to code, document and test an application. The applic
 ### Technology
 The application is a maven project written in Java. JavaFX is used for the user interface and JUnit test suite for the testing. 
 ### Documentation
+[User manual](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/user_manual.md)
+
 [Specification](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/specification.md)
 
 [Architecture description](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/architecture.md)
