@@ -2,6 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/yusifsalam/ot-harjoitustyo.svg?style=svg)](https://circleci.com/gh/yusifsalam/ot-harjoitustyo)
 [![codecov](https://codecov.io/gh/yusifsalam/ot-harjoitustyo/branch/master/graph/badge.svg)](https://codecov.io/gh/yusifsalam/ot-harjoitustyo)
+[![Maintainability](https://api.codeclimate.com/v1/badges/49eb6c2c861d9a00edb8/maintainability)](https://codeclimate.com/github/yusifsalam/ot-harjoitustyo/maintainability)
 
 
 
