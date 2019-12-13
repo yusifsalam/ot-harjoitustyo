@@ -40,3 +40,5 @@ jobs:
 
       # run tests!
       - run: mvn integration-test
+      - run: mvn jacoco:report
+      - run: bash <(curl -s https://codecov.io/bash)
