@@ -35,3 +35,4 @@ Possible expansion ideas include:
 - user can change their username or log in to old profile
 - user can view their game statistics
 - user can view 5 best players and their highscores
+- cli version removed
