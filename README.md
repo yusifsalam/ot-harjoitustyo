@@ -29,14 +29,7 @@ The application is a maven project written in Java. JavaFX is used for the user 
 ## Available commands
 After you have cloned the repository, change your working directory to the game sub-directory `cd GameOf2048/`, then you can run the following commands. 
 ### Starting the application
-Command-line version
-```
-mvn compile exec:java -Dexec.mainClass=game.Main
-```
-GUI version
-```
-mvn compile exec:java -Dexec.mainClass=game.ui.GameUI
-```
+You can either run the packaged jar file, create your own packaged jar file and run it or just open the project in your favorite IDE (IntelliJ recommended) and press click build/run. 
 ### Testing
 Tests can be run with the command
 ```
