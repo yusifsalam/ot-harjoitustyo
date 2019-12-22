@@ -5,6 +5,10 @@ The application is a JavaFX application wrapped around Spring Boot for data pers
 ### Coverage
 Test coverage is checked with Jacoco. For the latest coverage report you can check the Codecov report [here](https://codecov.io/gh/yusifsalam/ot-harjoitustyo)
 
+## Unit tests
+Unit tests are split to two - testing of Game logic and testing of DAO. 
+Game logic tests are designed to test that user actions generate correct responses from the application. DAO tests ensure that the database communication, reading and writing are working as intended. 
+
 ## System tests
 CircleCI build is set up for the application. You can view the CircleCI statuses [here](https://circleci.com/gh/yusifsalam/ot-harjoitustyo). There are no other automatic system tests shipped with the application. 
 ### Installation
