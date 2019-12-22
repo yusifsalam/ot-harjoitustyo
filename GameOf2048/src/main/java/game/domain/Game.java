@@ -35,36 +35,6 @@ public class Game {
     }
 
     /**
-     * this method is used for the CLI version of the game and is the main loop.
-     * @return final game score
-     */
-    public int playGame() {
-        while (board.canMove()) {
-            String direction = input.nextLine();
-            switch (direction) {
-                case "w":
-                    moveBoardUp();
-                    break;
-                case "a":
-                    moveBoardLeft();
-                    break;
-                case "s":
-                    moveBoardDown();
-                    break;
-                case "d":
-                    moveBoardRight();
-                    break;
-                case "i quit":
-                    gameOver = true;
-                    break;
-            }
-            nextMove();
-        }
-        gameOver = true;
-        return score;
-    }
-
-    /**
      * This is a helper method for updating game status between turns
      * @return True if next move is possible, False if game is over.
      */
