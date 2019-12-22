@@ -12,12 +12,17 @@ public class UserService {
 
     public User create(String name) {
         User user = new User(name);
-        return ur.save(user);
+        User savedUser = ur.save(user);
+        return savedUser;
     }
 
     public User updateName(String oldName, String newName) {
         User user = ur.findByUsername(oldName);
         user.setUsername(newName);
         return ur.save(user);
+    }
+
+    public int getSize() {
+        return ur.findAll().size();
     }
 }
