@@ -1,5 +1,6 @@
 package game;
 
+import game.dao.UserService;
 import game.domain.Board;
 import game.domain.Game;
 import game.domain.User;
@@ -19,6 +20,10 @@ public class Main implements CommandLineRunner {
     @Autowired
     private UserRepository ur;
 
+    @Autowired
+    private UserService us;
+
+    private User user;
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
@@ -26,8 +31,7 @@ public class Main implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        User user = new User("Unknown");
-        ur.save(user);
+        user = us.create("new");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Let the game begin");
 
@@ -42,7 +46,7 @@ public class Main implements CommandLineRunner {
                 case 2:
                     System.out.println("What is your name?");
                     String name = scanner.next();
-                    user.setUsername(name);
+                    user = us.updateName(user.getUsername(), name);
                     break;
                 case 3:
                     System.out.println("Please pick a random seed");
