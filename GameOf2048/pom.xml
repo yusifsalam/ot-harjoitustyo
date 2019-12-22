@@ -150,5 +150,6 @@
     </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <start-class>game.Main</start-class>
     </properties>
 </project>
