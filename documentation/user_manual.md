@@ -21,9 +21,11 @@ From the main screen, click the *SET USERNAME* button. Enter your new username i
 
 ## Viewing highscores
 From the main screen, click the *HIGHSCORES* button. You can now see the best 5 highscores. Note that the list contains each user's best scores, not all best scores.
+![highscore](https://raw.githubusercontent.com/yusifsalam/ot-harjoitustyo/master/documentation/images/highscores.png)
 
 ## Viewing stats
 From the main screen, click the *MY STATS* button. You can now see your game statistics. 
+![my_stats](https://raw.githubusercontent.com/yusifsalam/ot-harjoitustyo/master/documentation/images/my_stats.png)
 
 ## Controls and user interface
 Game controls are very simple - WASD scheme is used. 
