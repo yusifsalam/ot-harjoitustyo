@@ -29,8 +29,10 @@ import java.util.Scanner;
 public class GameUI extends Application {
 
     private Scene gameScene;
+    private Scene gameOverScene;
     private Scene mainMenuScene;
     private Scene changeUsernameScene;
+    private Scene myStatsScene;
     private Game game;
     private User user;
     private VBox gamePane;
@@ -53,7 +55,7 @@ public class GameUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         userService = applicationContext.getBean(UserService.class);
-        user = userService.create("Unknown_" + userService.getSize());
+        user = userService.create("Unknown_" + userService.getAllSize());
         stage = primaryStage;
 
         primaryStage.setTitle("2048");
@@ -72,6 +74,10 @@ public class GameUI extends Application {
         });
         Button highscoresBtn = new Button("HIGHSCORES");
         Button myStatsBtn = new Button("MY STATS");
+        myStatsBtn.setOnAction(e -> {
+            drawMyStats();
+            stage.setScene(myStatsScene);
+        });
         startPane.getChildren().addAll(gameTitle, newGameBtn, setUsername, highscoresBtn, myStatsBtn);
 
         mainMenuScene = new Scene(startPane, 450, 450);
@@ -118,7 +124,10 @@ public class GameUI extends Application {
                         System.out.println(game.getBoard());
                     }
                     else {
+                        boolean gameWon = game.gameWon();
+                        user = userService.addGame(user.getId(), game.getScore(), gameWon);
                         drawGameOver();
+                        stage.setScene(gameOverScene);
                     }
 
                 }
@@ -165,6 +174,9 @@ public class GameUI extends Application {
     }
 
     private void drawGameOver() {
+        VBox vb = new VBox(20);
+        gameOverScene = new Scene(vb, 440, 500);
+        gameOverScene.getStylesheets().add(style);
         gamePane.getChildren().clear();
         Font f = new Font(30);
         Text t1 = new Text();
@@ -177,7 +189,10 @@ public class GameUI extends Application {
         t2.setFill(Color.WHITE);
 
         Button startOver = new Button("Start over");
-        startOver.setOnAction(click -> startGame());
+        startOver.setOnAction(click -> {
+            stage.setScene(gameScene);
+            startGame();
+        });
 
         Button backToMenu = new Button("Back to main menu");
         backToMenu.setOnAction(click -> {
@@ -186,7 +201,7 @@ public class GameUI extends Application {
             Button btn = (Button) roo.getChildren().get(1);
             btn.setText("BACK TO GAME");
         });
-        gamePane.getChildren().addAll(t1, t2, startOver, backToMenu);
+        vb.getChildren().addAll(t1, t2, startOver, backToMenu);
     }
 
     private void drawChangeUsername() {
@@ -213,6 +228,35 @@ public class GameUI extends Application {
         });
         hb.getChildren().addAll(submitBtn, goBackBtn);
         vb.getChildren().addAll(label, textField, statusLabel, hb);
+    }
+
+    private void drawMyStats() {
+        VBox vb = new VBox();
+        vb.setSpacing(20);
+        myStatsScene = new Scene(vb, 440, 500);
+        myStatsScene.getStylesheets().add(style);
+        Label label = new Label("My stats");
+        Button goBackBtn = new Button("BACK TO MAIN MENU");
+        goBackBtn.setOnAction(e -> {
+            stage.setScene(mainMenuScene);
+        });
+        int gameCount = user.getHistory().split(";").length;
+        Text gamesPlayed = new Text("Games played: " + gameCount);
+        Text gamesWon = new Text("Games won: " + user.getGamesWon());
+        int winning = gameCount != 0 ? user.getGamesWon()/gameCount*100 : 0;
+        Text winningShare = new Text("Winning share: " + winning + "%");
+        Text userHighscore = new Text("Highscore: " + user.getHighscore());
+        Font f = new Font(15);
+        gamesPlayed.setFont(f);
+        gamesWon.setFont(f);
+        winningShare.setFont(f);
+        userHighscore.setFont(f);
+        gamesPlayed.setFill(Color.WHITE);
+        gamesWon.setFill(Color.WHITE);
+        winningShare.setFill(Color.WHITE);
+        userHighscore.setFill(Color.WHITE);
+        vb.getChildren().addAll(label, gamesPlayed, gamesWon, winningShare, userHighscore, goBackBtn);
+
     }
 
     private Color getCellFillColor(int value) {
