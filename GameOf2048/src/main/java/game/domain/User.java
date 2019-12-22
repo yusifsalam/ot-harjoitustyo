@@ -21,6 +21,7 @@ public class User {
 
     private String username;
     private int highscore;
+    private int gamesWon;
 
     @ElementCollection
     private List<Integer> history;
