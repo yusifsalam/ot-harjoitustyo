@@ -2,10 +2,11 @@ package game.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,14 +23,12 @@ public class User {
     private String username;
     private int highscore;
     private int gamesWon;
-
-    @ElementCollection
-    private List<Integer> history;
+    private String history;
 
     public User(String username) {
         this.username = username;
         this.highscore = 0;
-        this.history = new ArrayList<>();
+        this.history = "";
     }
 
     public String getUsername() {
