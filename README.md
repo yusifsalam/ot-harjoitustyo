@@ -19,6 +19,8 @@ The application is a maven project written in Java. JavaFX is used for the user 
 
 [Architecture description](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/architecture.md)
 
+[Testing documentation](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/testing.md)
+
 [Time book](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/work_hours.md)
 
 ### Releases
