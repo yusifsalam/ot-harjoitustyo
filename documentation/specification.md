@@ -15,9 +15,8 @@ After the CLI is functional, a graphical user interface will be implemented. The
 ## Basic features
 - start new game of 2048 [done]
 - restart game [done]
-- view stats
-- reset stats
-- compare highscores
+- view stats [done]
+- compare highscores [done]
 
 ## Future development
 Possible expansion ideas include:
@@ -25,10 +24,14 @@ Possible expansion ideas include:
 - achievements
 - time trial mode
 
-## Implemented features as of 08.12.2019
+## Implemented features as of 22.12.2019 (in chronological order)
 - basic cli to start a game or change username
 - game board's logic
 - player can start a game from command line
 - current version is slightly different from the conventional 2048 game in that the cells only move by one instead of moving as far as the board allows. 
 - user can now start a GUI version of the game 
 - user can restart a game from GUI
+- game starts to GUI by default
+- user can change their username or log in to old profile
+- user can view their game statistics
+- user can view 5 best players and their highscores
