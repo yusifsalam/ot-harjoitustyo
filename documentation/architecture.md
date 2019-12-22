@@ -32,6 +32,7 @@ Cell object is an individual cell inside the board. Cell only contains its value
 
 ## Database
 !NB actual implementation is different from the diagram below.
+
 ![db](https://raw.githubusercontent.com/yusifsalam/ot-harjoitustyo/master/documentation/images/db.png)
 
 Spring Boot was used for persistence. User class is the only entity used for persistence. Each user entry contains the following:
