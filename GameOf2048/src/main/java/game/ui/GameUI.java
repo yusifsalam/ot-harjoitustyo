@@ -222,7 +222,7 @@ public class GameUI extends Application {
         Button submitBtn = new Button("SUBMIT");
         submitBtn.setOnAction(e -> {
             if (textField.getText() != null && !textField.getText().isEmpty()) {
-                user = userService.updateName(user.getUsername(), textField.getText());
+                user = userService.updateName(user.getId(), textField.getText());
                 statusLabel.setText("Success");
             } else {
                 statusLabel.setText("Try again...");

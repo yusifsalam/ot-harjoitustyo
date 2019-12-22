@@ -19,12 +19,12 @@ public class UserService {
         return savedUser;
     }
 
-    public User updateName(String oldName, String newName) {
+    public User updateName(Long id, String newName) {
         User user = ur.findByUsername(newName);
         if (user !=  null) {
             return user;
         }
-        user = ur.findByUsername(oldName);
+        user = ur.findById(id).get();
         user.setUsername(newName);
         return ur.save(user);
     }
