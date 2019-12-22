@@ -3,15 +3,31 @@ package game;
 import game.domain.Board;
 import game.domain.Game;
 import game.domain.User;
+import game.dao.UserRepository;
 import game.ui.GameUI;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+
+@SpringBootApplication
+public class Main implements CommandLineRunner {
+
+    @Autowired
+    private UserRepository ur;
+
 
     public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+    }
+
+    @Override
+    public void run(String... args) {
         User user = new User("Unknown");
+        ur.save(user);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Let the game begin");
 
