@@ -9,4 +9,5 @@
 | 3.12 | 4 | work on the GUI version of the game, revise how javafx works|
 | 8.12 | 4 | implement game over condition, GUI: game can now be restarted, more junit tests|
 | 10.12 | 2 | comment code for javadoc, write user manual |
-| total   | 26   | | 
+| 13.12 | 1 | add badges |
+| total   | 27   | | 
