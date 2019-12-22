@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -33,6 +34,7 @@ public class GameUI extends Application {
     private Scene mainMenuScene;
     private Scene changeUsernameScene;
     private Scene myStatsScene;
+    private Scene highscoresScene;
     private Game game;
     private User user;
     private VBox gamePane;
@@ -73,6 +75,10 @@ public class GameUI extends Application {
             primaryStage.setScene(changeUsernameScene);
         });
         Button highscoresBtn = new Button("HIGHSCORES");
+        highscoresBtn.setOnAction(e -> {
+            drawHighscores();
+            stage.setScene(highscoresScene);
+        });
         Button myStatsBtn = new Button("MY STATS");
         myStatsBtn.setOnAction(e -> {
             drawMyStats();
@@ -256,7 +262,31 @@ public class GameUI extends Application {
         winningShare.setFill(Color.WHITE);
         userHighscore.setFill(Color.WHITE);
         vb.getChildren().addAll(label, gamesPlayed, gamesWon, winningShare, userHighscore, goBackBtn);
+    }
 
+    private void drawHighscores() {
+        VBox vb = new VBox();
+        vb.setSpacing(20);
+        highscoresScene = new Scene(vb, 440, 500);
+        highscoresScene.getStylesheets().add(style);
+        Label label = new Label("HIGHSCORES");
+        Button goBackBtn = new Button("BACK TO MAIN MENU");
+        goBackBtn.setOnAction(e -> {
+            stage.setScene(mainMenuScene);
+        });
+        List<User> leaders = userService.getFiveBest();
+        vb.getChildren().add(label);
+        int index = 1;
+        for (User usr: leaders) {
+            if (usr.getHighscore() != 0) {
+                Text userTxt = new Text(index + "." + usr.getUsername() + ": " + usr.getHighscore());
+                userTxt.setFill(Color.WHITE);
+                userTxt.setFont(new Font(15));
+                vb.getChildren().add(userTxt);
+                index++;
+            }
+        }
+        vb.getChildren().add(goBackBtn);
     }
 
     private Color getCellFillColor(int value) {
