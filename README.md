@@ -11,7 +11,7 @@ The goal of the project is to code, document and test an application. The applic
 ![game_screenshot](https://raw.githubusercontent.com/yusifsalam/ot-harjoitustyo/master/documentation/images/screenshot.png)
 
 ### Technology
-The application is a maven project written in Java. JavaFX is used for the user interface and JUnit test suite for the testing. 
+The application is a maven project written in Java. JavaFX is used for the user interface, Sprint Boot with H2 for data persistence and JUnit test suite for the testing. 
 ### Documentation
 [User manual](https://github.com/yusifsalam/ot-harjoitustyo/blob/master/documentation/user_manual.md)
 
