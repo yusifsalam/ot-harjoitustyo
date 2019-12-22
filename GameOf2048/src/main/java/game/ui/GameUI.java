@@ -1,5 +1,7 @@
 package game.ui;
 
+import game.Main;
+import game.dao.UserService;
 import game.domain.Board;
 import game.domain.Cell;
 import game.domain.Game;
@@ -10,6 +12,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -17,6 +20,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -25,16 +30,32 @@ public class GameUI extends Application {
 
     private Scene gameScene;
     private Scene mainMenuScene;
+    private Scene changeUsernameScene;
     private Game game;
     private User user;
     private VBox gamePane;
     private Stage stage;
+    private ConfigurableApplicationContext applicationContext;
+    private UserService userService;
+    private String style = "/stylesheet.css";
+
 
 
     @Override
+    public void init() {
+        String[] args = getParameters().getRaw().toArray(new String[0]);
+
+        this.applicationContext = new SpringApplicationBuilder()
+                .sources(Main.class)
+                .run(args);
+    }
+
+    @Override
     public void start(Stage primaryStage) throws Exception {
+        userService = applicationContext.getBean(UserService.class);
+        user = userService.create("Unknown_" + userService.getSize());
         stage = primaryStage;
-        String style = "/stylesheet.css";
+
         primaryStage.setTitle("2048");
         primaryStage.setResizable(false);
         VBox startPane = new VBox(10);
@@ -44,13 +65,17 @@ public class GameUI extends Application {
         newGameBtn.setOnAction(e->{
             primaryStage.setScene(gameScene);
         });
+        Button setUsername = new Button("SET USERNAME");
+        setUsername.setOnAction(e -> {
+            drawChangeUsername();
+            primaryStage.setScene(changeUsernameScene);
+        });
         Button highscoresBtn = new Button("HIGHSCORES");
         Button myStatsBtn = new Button("MY STATS");
-        startPane.getChildren().addAll(gameTitle, newGameBtn, highscoresBtn, myStatsBtn);
+        startPane.getChildren().addAll(gameTitle, newGameBtn, setUsername, highscoresBtn, myStatsBtn);
 
         mainMenuScene = new Scene(startPane, 450, 450);
         mainMenuScene.getStylesheets().add(style);
-        user = new User("test");
 
         primaryStage.setScene(mainMenuScene);
         primaryStage.show();
@@ -63,6 +88,7 @@ public class GameUI extends Application {
         else {
             gamePane = new VBox(10);
             gameScene = new Scene(gamePane, 440, 500);
+            gameScene.getStylesheets().add(style);
             gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
                 @Override
                 public void handle(KeyEvent event) {
@@ -78,6 +104,13 @@ public class GameUI extends Application {
                             break;
                         case D:
                             game.moveBoardRight();
+                            break;
+                        case R:
+                            game = new Game(new Board(new Random()), user, new Scanner(System.in));
+                            drawBoard();
+                            break;
+                        case ESCAPE:
+                            stage.setScene(mainMenuScene);
                             break;
                     }
                     if (game.nextMove()) {
@@ -99,8 +132,18 @@ public class GameUI extends Application {
     private void drawBoard() {
         gamePane.getChildren().clear();
         BorderPane gameInfo = new BorderPane();
-        gameInfo.setLeft(new Label("Username: " + user.getUsername()));
-        gameInfo.setRight(new Label("Score: " + game.getScore()));
+        Font f = new Font(15);
+        Text usernameTxt = new Text();
+        usernameTxt.setText(user.getUsername());
+        usernameTxt.setFill(Color.WHITE);
+        usernameTxt.setFont(f);
+
+        Text gameScoreTxt = new Text();
+        gameScoreTxt.setText("Score: " + game.getScore());
+        gameScoreTxt.setFill(Color.WHITE);
+        gameScoreTxt.setFont(f);
+        gameInfo.setLeft(usernameTxt);
+        gameInfo.setRight(gameScoreTxt);
         GridPane gameGrid = new GridPane();
         int index = 0;
         for (Cell cell: game.getBoard().getCells()) {
@@ -127,9 +170,11 @@ public class GameUI extends Application {
         Text t1 = new Text();
         t1.setFont(f);
         t1.setText("GAME OVER!");
+        t1.setFill(Color.WHITE);
         Text t2 = new Text();
         t2.setFont(f);
         t2.setText("YOUR SCORE WAS: " + game.getScore());
+        t2.setFill(Color.WHITE);
 
         Button startOver = new Button("Start over");
         startOver.setOnAction(click -> startGame());
@@ -142,6 +187,32 @@ public class GameUI extends Application {
             btn.setText("BACK TO GAME");
         });
         gamePane.getChildren().addAll(t1, t2, startOver, backToMenu);
+    }
+
+    private void drawChangeUsername() {
+        VBox vb = new VBox();
+        vb.setSpacing(20);
+        changeUsernameScene = new Scene(vb, 440, 500);
+        changeUsernameScene.getStylesheets().addAll(style);
+        Label label = new Label("Change username");
+        Label statusLabel = new Label();
+        TextField textField = new TextField();
+        HBox hb = new HBox();
+        Button submitBtn = new Button("SUBMIT");
+        submitBtn.setOnAction(e -> {
+            if (textField.getText() != null && !textField.getText().isEmpty()) {
+                user = userService.updateName(user.getUsername(), textField.getText());
+                statusLabel.setText("Success");
+            } else {
+                statusLabel.setText("Try again...");
+            }
+        });
+        Button goBackBtn = new Button("BACK TO MAIN MENU");
+        goBackBtn.setOnAction(e -> {
+            stage.setScene(mainMenuScene);
+        });
+        hb.getChildren().addAll(submitBtn, goBackBtn);
+        vb.getChildren().addAll(label, textField, statusLabel, hb);
     }
 
     private Color getCellFillColor(int value) {
@@ -190,9 +261,10 @@ public class GameUI extends Application {
     @Override
     public void stop() {
         System.out.println("app is closing now");
+        applicationContext.stop();
     }
 
     public static void main(String[] args) {
-        launch(args);
+        launch(GameUI.class, args);
     }
 }
