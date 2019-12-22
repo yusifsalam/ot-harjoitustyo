@@ -4,8 +4,6 @@ import game.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserService {
 
@@ -19,26 +17,31 @@ public class UserService {
     }
 
     public User updateName(String oldName, String newName) {
-        User user = ur.findByUsername(oldName);
+        User user = ur.findByUsername(newName);
+        if (user !=  null) {
+            return user;
+        }
+        user = ur.findByUsername(oldName);
         user.setUsername(newName);
         return ur.save(user);
     }
 
     public User addGame(Long id, int score, boolean gameWon) {
-        User user = ur.getOne(id);
+        User user = ur.findById(id).get();
         if (gameWon) {
             user.setGamesWon(user.getGamesWon() + 1);
         }
         if (score > user.getHighscore()) {
             user.setHighscore(score);
         }
-        List<Integer> userHistory = user.getHistory();
-        userHistory.add(score);
+        String userHistory = user.getHistory();
+        String gameStatus = gameWon ? "W" : "L";
+        userHistory += (gameStatus + score + ";");
         user.setHistory(userHistory);
         return ur.save(user);
     }
 
-    public int getSize() {
+    public int getAllSize() {
         return ur.findAll().size();
     }
 }
