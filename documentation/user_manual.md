@@ -13,6 +13,18 @@ The starting screen should look something like this
 ## Starting a new game
 From the main screen, click the *START GAME* button. You can now see a 4x4 board. Your goal is to merge the cells until you get to 2048
 
+
+## Changing username / logging in
+By default, when you start the application, your username is set to "Unknown". This screen allows you to change your username. If the username is in the database, this acts as a login, otherwise the "Unknown" username is changed to user input. 
+
+From the main screen, click the *SET USERNAME* button. Enter your new username in the text field and press *SUBMIT*. If everything goes smoothly, you should know see a message that says _Success_. 
+
+## Viewing highscores
+From the main screen, click the *HIGHSCORES* button. You can now see the best 5 highscores. Note that the list contains each user's best scores, not all best scores.
+
+## Viewing stats
+From the main screen, click the *MY STATS* button. You can now see your game statistics. 
+
 ## Controls and user interface
 Game controls are very simple - WASD scheme is used. 
 - `W` to move cells up
@@ -30,4 +42,6 @@ At the top of the window you will see your username on the left side and your sc
 After your game has come to a close, you'll be shown a similar screen to this
 ![game_over](https://raw.githubusercontent.com/yusifsalam/ot-harjoitustyo/master/documentation/images/game_over.png)
 
-You can now start over from a fresh board or get back to the main menu (for example to check your stats)
+You can now start over from a fresh board or get back to the main menu (for example to check your stats). 
+
+It is also possible to restart mid-game. To do this, press the `R` key. Note that there is no confirmation after pressing the key and your progress will be lost irretrievably. 
