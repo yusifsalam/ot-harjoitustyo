@@ -19,6 +19,8 @@ Game controls are very simple - WASD scheme is used.
 - `S` to move cells down
 - `A` to move cells left
 - `D` to move cells right
+- `R` to reset game
+- `ESC` to go back to main menu
 
 ![game_board](https://raw.githubusercontent.com/yusifsalam/ot-harjoitustyo/master/documentation/images/game_board.png)
 
