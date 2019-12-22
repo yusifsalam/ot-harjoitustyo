@@ -10,4 +10,5 @@
 | 8.12 | 4 | implement game over condition, GUI: game can now be restarted, more junit tests|
 | 10.12 | 2 | comment code for javadoc, write user manual |
 | 13.12 | 1 | add badges |
-| total   | 27   | | 
+| 22.12 | 13 | update documentation, convert application to spring boot for persistence, implement user stats and high scores (both logic and GUI) |
+| total   | 40   | | 
