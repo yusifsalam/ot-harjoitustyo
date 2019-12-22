@@ -4,6 +4,9 @@ import game.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserService {
 
@@ -39,6 +42,12 @@ public class UserService {
         userHistory += (gameStatus + score + ";");
         user.setHistory(userHistory);
         return ur.save(user);
+    }
+
+    public List<User> getFiveBest() {
+        List<User> users = ur.findAll();
+        users.sort((a, b) -> b.getHighscore() - a.getHighscore());
+        return users.stream().limit(5).collect(Collectors.toList());
     }
 
     public int getAllSize() {
