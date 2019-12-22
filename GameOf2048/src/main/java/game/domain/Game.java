@@ -61,6 +61,10 @@ public class Game {
         return maxVal >= 2048;
     }
 
+    /**
+     * checks if the game has ended
+     * @return True or False
+     */
     private void checkIfGameEnded() {
         if (!board.canMove()) {
             gameOver = true;
@@ -88,7 +92,7 @@ public class Game {
     }
 
     public String toString() {
-        String res = "Username: " + user.toString();
+        String res = "";
         res += "\n Score: " + score;
         res += "\n Board: \n" + board.toString();
         return res;
